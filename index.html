@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM - Security Incident Mapping</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #222;
+        }
+
+        header {
+            background: #102a43;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        nav {
+            background: #176b55;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 25px auto;
+            padding: 15px;
+        }
+
+        .notice {
+            background: #fff3cd;
+            border-left: 5px solid #e0a800;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #00000010;
+        }
+
+        h2 {
+            color: #102a43;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 14px 0 7px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background: #176b55;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-top: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #10513f;
+        }
+
+        .incident {
+            background: #f8fafc;
+            border-left: 4px solid #176b55;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        .incident p {
+            margin: 7px 0;
+        }
+
+        .status {
+            color: #b45309;
+            font-weight: bold;
+        }
+
+        .empty {
+            color: #666;
+        }
+
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 15px auto;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>SIM</h1>
+        <p>Security Incident Mapping</p>
+        <p>Making Our Campus Safer Together</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#report">Report Incident</a>
+        <a href="#incidents">Recent Reports</a>
+    </nav>
+
+    <main class="container" id="home">
+
+        <div class="notice">
+            <strong>Safety Alert:</strong>
+            If you are in immediate danger, move to a safe location
+            and contact campus security or emergency services.
+            Do not use this demonstration website as an emergency service.
+        </div>
+
+        <section class="card">
+            <h2>About SIM</h2>
+            <p>
+                Security Incident Mapping (SIM) is a proposed web platform
+                designed to help students, university staff, and residents
+                report security incidents within the campus community.
+                It aims to support awareness and improve communication
+                with the appropriate security authorities.
+            </p>
+        </section>
+
+        <section class="card" id="report">
+            <h2>Report a Security Incident</h2>
+
+            <form id="incidentForm">
+
+                <label for="reporter">Reporter Category</label>
+                <select id="reporter" required>
+                    <option value="">Select category</option>
+                    <option>Student</option>
+                    <option>University Staff</option>
+                    <option>Landlord/Resident</option>
+                </select>
+
+                <label for="type">Type of Incident</label>
+                <select id="type" required>
+                    <option value="">Select incident type</option>
+                    <option>Theft/Stealing</option>
+                    <option>Assault/Stabbing</option>
+                    <option>Sexual Violence</option>
+                    <option>Robbery</option>
+                    <option>Vandalism</option>
+                    <option>Suspicious Activity</option>
+                    <option>Murder</option>
+                    <option>Other</option>
+                </select>
+
+                <label for="location">Incident Location</label>
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="e.g. Near the university gate"
+                    required
+                >
+
+                <label for="date">Date of Incident</label>
+                <input type="date" id="date" required>
+
+                <label for="description">Incident Description</label>
+                <textarea
+                    id="description"
+                    rows="4"
+                    placeholder="Describe what happened..."
+                    required
+                ></textarea>
+
+                <label for="urgency">Urgency Level</label>
+                <select id="urgency" required>
+                    <option value="">Select urgency</option>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    <option>Critical</option>
+                </select>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="anonymous"
+                        style="width: auto; margin-right: 8px;"
+                    >
+                    Submit anonymously
+                </label>
+
+                <button type="submit">Submit Report</button>
+
+            </form>
+        </section>
+
+        <section class="card" id="incidents">
+            <h2>Recent Incident Reports</h2>
+
+            <p class="empty" id="emptyMessage">
+                No reports submitted in this session.
+            </p>
+
+            <div id="incidentList"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SIM - Security Incident Mapping</p>
+        <p>Promoting a safer campus community.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById("incidentForm");
+        const incidentList = document.getElementById("incidentList");
+        const emptyMessage = document.getElementById("emptyMessage");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const reporter = document.getElementById("reporter").value;
+            const type = document.getElementById("type").value;
+            const location = document.getElementById("location").value;
+            const date = document.getElementById("date").value;
+            const description = document.getElementById("description").value;
+            const urgency = document.getElementById("urgency").value;
+            const anonymous = document.getElementById("anonymous").checked;
+
+            const incident = document.createElement("div");
+            incident.className = "incident";
+
+            function addDetail(label, value) {
+                const paragraph = document.createElement("p");
+                const strong = document.createElement("strong");
+
+                strong.textContent = label + ": ";
+                paragraph.appendChild(strong);
+                paragraph.appendChild(document.createTextNode(value));
+
+                incident.appendChild(paragraph);
+            }
+
+            addDetail("Incident Type", type);
+            addDetail("Location", location);
+            addDetail("Date", date);
+            addDetail("Description", description);
+            addDetail("Reporter", anonymous ? "Anonymous" : reporter);
+            addDetail("Urgency", urgency);
+
+            const status = document.createElement("p");
+            status.className = "status";
+            status.textContent = "Status: Awaiting Review";
+            incident.appendChild(status);
+
+            incidentList.prepend(incident);
+
+            emptyMessage.style.display = "none";
+
+            alert("Incident report added to this demonstration.");
+
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
